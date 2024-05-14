@@ -1,0 +1,4 @@
+Branch Condition: call, Target: addl	%ebx, %eax
+Branch Condition: call, Target: movl	$12, -32(%rbp)
+Branch Condition: call, Target: movl	%eax, %edx
+Branch Condition: call, Target: movl	$0, %eax
