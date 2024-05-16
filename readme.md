@@ -38,7 +38,7 @@ Analyzing assembly code can be a complex task, especially when dealing with larg
 
 ## Contributors
 
-- [DEEPAK YADAV](https://github.com/Deepakyavav/CSA_2)
+- [DEEPAK YADAV](https://github.com/Deepakyavav/csa_2)
 
 Feel free to contribute to this project by opening issues or pull requests. Contributions are welcomed and appreciated!
 

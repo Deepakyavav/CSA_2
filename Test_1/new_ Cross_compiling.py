@@ -36,7 +36,7 @@ def cross_compile_to_assembly(source_file, architecture, output_dir):
 # Example usage
 if __name__ == "__main__":
     # Specify the source file, target architecture, and output directory
-    source_file = "example.c"  # Path to your C/C++ source file
+    source_file = "file_1.cpp"  # Path to your C/C++ source file
     architecture = "x86"  # Target architecture: x86, arm, mips, etc.
     output_dir = "output_assembly"  # Directory to store the generated assembly code
 

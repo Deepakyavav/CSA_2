@@ -1,16 +1,19 @@
 import os
 import shutil
-import subprocess
-import zipfile
-import urllib.request
+import request
+import tarfile
 
-# Function to download and extract a benchmark suite
-def download_and_extract(url, destination):
-    print(f"Downloading {url}")
-    urllib.request.urlretrieve(url, destination)
-    print("Extracting...")
-    with zipfile.ZipFile(destination, 'r') as zip_ref:
-        zip_ref.extractall('.')
+# Function to download and extract a tar.gz file
+def download_and_extract(url, extract_path):
+    # Download the file
+    response = requests.get(url, stream=True)
+    with open('temp.tar.gz', 'wb') as out_file:
+        shutil.copyfileobj(response.raw, out_file)
+    print("Download complete.")
+    
+    # Extract the file
+    with tarfile.open('temp.tar.gz') as tar_ref:
+        tar_ref.extractall(extract_path)
     print("Extraction complete.")
 
 # Function to collect benchmark workloads from a benchmark suite
@@ -32,15 +35,7 @@ if __name__ == "__main__":
     spec_output_dir = "./SPEC_CPU2006_workloads"
 
     # Download and extract SPEC CPU2006
-    download_and_extract(spec_url, "cpu2006.tar.gz")
+    download_and_extract(spec_url, spec_dir)
 
-    # Collect workloads from SPEC CPU2006
+    # Collect workloads
     collect_workloads(spec_dir, spec_output_dir)
-
-
-
-# In this example:
-
-# The download_and_extract function downloads a benchmark suite from a given URL and extracts it to the current directory.
-# The collect_workloads function collects benchmark workloads (executable files) from a benchmark suite directory and copies them to a specified output directory.
-# In the main section, you can specify the URL of the benchmark suite and the directories for downloading and extracting the suite (spec_url and spec_dir). Then, the script downloads and extracts the SPEC CPU2006 benchmark suite and collects its workloads into a directory named SPEC_CPU2006_workloads
